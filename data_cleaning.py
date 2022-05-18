@@ -23,5 +23,7 @@ df1['Item_Fat_Content'] = df1['Item_Fat_Content'].replace(['LF','REG'],['LOW FAT
 
 
 df1.to_csv("data_cleaned.csv",index = False)
+target.to_csv('train_target.csv',index = False)
+
 
 
