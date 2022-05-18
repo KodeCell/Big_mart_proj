@@ -21,6 +21,7 @@ df1['Item_Fat_Content'] = df1['Item_Fat_Content'].apply(lambda x : x.upper())
 df1['Item_Fat_Content'] = df1['Item_Fat_Content'].replace(['LF','REG'],['LOW FAT', 'REGULAR'])
 # array(['LOW FAT', 'REGULAR'], dtype=object)
 
-df1.to_csv("data_cleaned.csv")
+
+df1.to_csv("data_cleaned.csv",index = False)
 
 
