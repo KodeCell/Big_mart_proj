@@ -21,6 +21,16 @@ df1['Item_Fat_Content'] = df1['Item_Fat_Content'].apply(lambda x : x.upper())
 df1['Item_Fat_Content'] = df1['Item_Fat_Content'].replace(['LF','REG'],['LOW FAT', 'REGULAR'])
 # array(['LOW FAT', 'REGULAR'], dtype=object)
 
+# creating a new attribute
+df1['New_Item_Type'] = df1['Item_Identifier'].apply(lambda x : x[:2])
+
+# mapping the new attribute column
+df1['New_Item_Type'] = df1['New_Item_Type'].map({'FD' : 'Food','NC' : 'Non-Consumables','DR' : 'Drinks'})
+
+df1.loc[df1['New_Item_Type']=='Non-Consumables', 'Item_Fat_Content'] = 'Non-Edible'
+
+# create small values for establishment year to reduce the higher numbers
+df['Outlet_Years'] = 2013 - df['Outlet_Establishment_Year']
 
 df1.to_csv("data_cleaned.csv",index = False)
 target.to_csv('train_target.csv',index = False)
