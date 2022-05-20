@@ -30,7 +30,7 @@ df1['New_Item_Type'] = df1['New_Item_Type'].map({'FD' : 'Food','NC' : 'Non-Consu
 df1.loc[df1['New_Item_Type']=='Non-Consumables', 'Item_Fat_Content'] = 'Non-Edible'
 
 # create small values for establishment year to reduce the higher numbers
-df['Outlet_Years'] = 2013 - df['Outlet_Establishment_Year']
+df1['Outlet_Years'] = 2013 - df1['Outlet_Establishment_Year']
 
 df1.to_csv("data_cleaned.csv",index = False)
 target.to_csv('train_target.csv',index = False)
