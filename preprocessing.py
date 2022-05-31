@@ -18,4 +18,8 @@ def preprocess(train):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
+    import pickle
+    pickle.dump(scaler, open('scaler.pkl', 'wb'))
+
+
     return X_scaled,Y

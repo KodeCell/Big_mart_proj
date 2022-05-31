@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-train = pd.read_csv('big_mart_train.csv')
-test = pd.read_csv('big_mart_test.csv')
+train = pd.read_csv('data/big_mart_train.csv')
+test = pd.read_csv('data/big_mart_test.csv')
 
 # merging the train and test so that we can get more insights of the data
 target = train['Item_Outlet_Sales']
@@ -32,8 +32,6 @@ df1.loc[df1['New_Item_Type']=='Non-Consumables', 'Item_Fat_Content'] = 'Non-Edib
 # create small values for establishment year to reduce the higher numbers
 df1['Outlet_Years'] = 2013 - df1['Outlet_Establishment_Year']
 
-df1.to_csv("data_cleaned.csv",index = False)
-target.to_csv('train_target.csv',index = False)
 
 
 

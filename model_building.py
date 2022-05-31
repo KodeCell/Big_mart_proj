@@ -6,8 +6,8 @@ Created on Wed May 18 18:11:52 2022
 """
 import pandas as pd
 
-df = pd.read_csv('data_cleaned.csv')
-train_target = pd.read_csv('train_target.csv')
+df = pd.read_csv('data/data_cleaned.csv')
+train_target = pd.read_csv('data/train_target.csv')
 # splitting the original train and test set from the dataframe
 test = df.loc[8523:]
 test.reset_index(drop=True, inplace=True)
@@ -37,4 +37,8 @@ las_reg = Lasso(alpha = 0.004) # found the optimal value in the jupyter notebook
 model_list = [lin_reg,las_reg,rid_reg,svm_reg,dt_reg,neigh]
 import model_test
 model_performance = model_test.train(model_list,X_train,X_test,Y_train,Y_test)
+# we save SVR() model as it performs the best
+
+import pickle
+pickle.dump(svm_reg,open('final_model.pickle','wb'))
 
